@@ -64,8 +64,9 @@ h1{
 }
 #edit input[type = "text"]{
     background-color: #fff;
-    border: 2.5%;
     width:15rem;
+    border-radius:20px ;
+    outline: none;
 }
 #edit input[type = "submit"]{
     border: none;

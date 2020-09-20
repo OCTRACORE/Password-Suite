@@ -49,6 +49,7 @@ body{
     background-color: #fff;
     border-top-left-radius: 20px;
     border-bottom-left-radius: 20px;
+    outline:none;
    
 }
 #suggest-input form input[type = "number"]:active {
