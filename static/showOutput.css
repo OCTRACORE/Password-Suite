@@ -85,13 +85,17 @@ table thead th{
 #nav-bar span{
     color:#fff;
     font-weight:600;
+   
 }
 #add_passwrd{
     background-color:#ff383f;
     border-bottom-left-radius:20px;
     border-bottom-right-radius: 20px;
+    height:2rem;
 }
 #add_passwrd span{
+    position:relative;
+    bottom: 0.3rem;
     background-color:#1a1a1d;
     border-radius:20px;
     display:inline-block;
@@ -103,6 +107,7 @@ table thead th{
 }
 #add_passwrd span:hover{
    padding:1rem;
+   bottom:0.5rem;
    transition-timing-function: ease-in-out;
    transition-duration: 0.30s;
 
