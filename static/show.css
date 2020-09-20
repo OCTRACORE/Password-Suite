@@ -1,0 +1,86 @@
+*{
+  padding:1rem;
+  background-color:#caebf2;
+  font-family: 'Lato',sans-serif;
+  
+}
+html{
+    width:fit-content;
+    height:fit-content;
+    margin:auto;
+    position: relative;
+    top:6rem;
+}
+body{
+    margin:auto;
+    width:fit-content;
+}
+#edit,h1,#navbar{
+    background-color: #1a1a1d;
+}
+#edit input{
+ margin:1%;
+ border:none;
+}
+#navbar{
+    width:fit-content;
+    margin:auto;
+    
+}
+#delete input{
+    width:7.2rem;
+}
+#delete{
+    background-color: #ff383f;
+}
+h1{
+    position: relative;
+    top:1.4rem;
+    color:#fff;
+   
+}
+#navbar a{
+    background-color:#1a1a1d;
+    text-decoration:none;
+    color:#fff;
+    text-align:justify;
+    padding-bottom:-0.5%;
+    padding-top: 0.5%;
+    border-radius: 2.5%;
+    
+}
+#navbar a:hover{
+    border-bottom:0.2rem solid #ff383f;
+}
+#navbar span{
+    margin:0;
+    background-color: #1a1a1d;
+    color:#fff;
+    font-weight: 600;
+}
+#edit input[type = "text"]{
+    background-color: #fff;
+    border: 2.5%;
+    width:15rem;
+}
+#edit input[type = "submit"]{
+    border: none;
+    background-color: #ff383f;
+    color:#fff;
+    font-weight: 600;
+}
+#delete input[type = "submit"]{
+    border:none;
+    background-color: #1a1a1d;
+    color:#fff;
+    font-weight: 600;
+    position: relative;
+    left:0.7%;
+}
+#output-data{
+    background-color:#1a1a1d;
+}
+#output-data table{
+    background-color:#1a1a1d;
+    
+}

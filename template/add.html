@@ -1,0 +1,15 @@
+{% extends 'str_main.html' %}
+{% block content %}
+<h1>Add a password</h1>
+<div id  = "nav-bar">
+  <a href = "{{url_for('data_input')}}">Home</a>
+  <span>|</span>
+  <a href = "{{url_for('show_output')}}">Go back</a>
+  <span>|</span>
+  <a href="{{url_for('disp_manip_menu')}}">Save/Upload</a> 
+</div>
+<form action = "/generate/add-passwd-sug" method = "GET">
+  <input type = "number" name = "add-sug"placeholder ="no. of suggestion">
+  <input type = "submit" value = "Submit">
+</form>
+{% endblock %}

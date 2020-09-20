@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Password suite</title>
+        <link href="https://fonts.googleapis.com/css2?family=Lato&display=swap" rel="stylesheet">
+        <link rel="apple-touch-icon" sizes="180x180" href="{{url_for('static',filename ='favicon_io/apple-touch-icon.png')}}">
+        <link rel="icon" type="image/png" sizes="32x32" href="{{url_for('static',filename = 'favicon_io/favicon-32x32.png')}}">
+        <link rel="icon" type="image/png" sizes="16x16" href="{{url_for('static',filename='favicon_io/favicon-16x16.png')}}">
+        <link rel="manifest" href="{{url_for('static',filename = 'favicon_io/site.webmanifest')}}">   
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        {% if request.endpoint == 'data_input' %}
+          <link rel = "stylesheet" href = "{{url_for('static',filename = 'input.css')}}">
+        {% elif request.endpoint == 'show_output' %}
+          <link rel = "stylesheet" href = "{{url_for('static',filename = 'showOutput.css')}}">
+        {% elif request.endpoint == "show" %}
+          <link rel = "stylesheet" href = "{{url_for('static',filename = 'show.css')}}">
+        {% elif request.endpoint == "add_passwd_inp" %}
+          <link rel = "stylesheet" href = "{{url_for('static',filename = 'AddPasswdInp.css')}}">
+        {% elif request.endpoint == "disp_manip_menu" %}
+          <link rel = "stylesheet" href = "{{url_for('static',filename = 'dispManipMenu.css')}}">
+        {% elif request.endpoint == "save_file" %}
+          <link rel = "stylesheet" href = "{{url_for('static',filename = 'dispManipMenu.css')}}">
+        {% endif %}
+
+    </head>
+
+    <body>
+        {%block content%}
+        {%endblock%}
+    </body>
+</html>

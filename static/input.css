@@ -1,0 +1,108 @@
+*{  
+    font-family: 'Lato',sans-serif;
+    padding:0.8rem;
+    background-color: #caebf2;
+}
+
+html{
+    height:40rem;
+    width:50%;
+    margin:auto;
+    position: relative;
+    top:8rem;
+}
+body{
+    height:90%;
+    width:90%;
+    margin:auto;
+}
+#suggest-input,#header{
+   position: relative;
+   top:2em;
+   margin:auto;
+}
+#suggest-input form{
+    height:50%;
+    position:sticky;
+    background-color:  #ff383f ;
+    
+}
+#suggest-input{
+    background-color:  #ff383f ;
+}
+#suggest-input form input[type = "submit"]{
+    background-color:#1a1a1d ;
+    color:#fff;
+    font-weight: 600;
+    border:none;
+    width:6rem;
+    border-radius: 2.5%;
+}  
+#suggest-input form input[type = "number"]{
+    border:none;
+    width:10rem;
+    border-radius:2.5%;
+    margin:auto;
+    background-color: #fff;
+   
+}
+
+#header{
+    height:50%;
+    background-color:#1a1a1d ;
+    color:#fff;
+    border-color:#1a1a1d;
+}
+#header h1, #header a{
+    background-color: #1a1a1d;
+    position: relative;
+    top:5rem;
+}
+
+
+#header a {
+    width:fit-content;
+    color: #fff;
+    text-decoration:none;
+    position: relative;
+    bottom: 20rem;
+}
+
+#header h1{
+    width:fit-content;
+    text-align:left;
+
+}
+@media only screen and (max-width: 1000px) {
+    html{
+        width:80%;
+        margin:auto;
+        position: relative;
+        top:8rem;
+    
+    }
+    body{
+        height:80%;
+        width:90%;
+        margin:auto;
+    }
+    #suggest-input,#header{
+        position: relative;
+        top:2em;
+        margin:auto;
+    }   
+    #suggest-input form{
+        height:100%;
+        position:sticky;
+        background-color:  #ff383f ;
+        margin:auto;        
+        
+    }
+    #header{
+        height:55%;
+        background-color:#1a1a1d ;
+        color:#fff;
+        border-color:#1a1a1d;
+    }   
+
+}

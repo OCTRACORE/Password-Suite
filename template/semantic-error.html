@@ -1,0 +1,40 @@
+{% extends 'str_main.html' %}
+{% block content %}
+<style>
+    body{
+        background-color:#caebf2;
+        font-family: 'Lato';
+        width:50%;
+        background-color: #1a1a1d;
+        color:#fff;
+        position: relative;
+        top:10rem;
+    }
+    p{
+        position:relative;
+        font-weight:600;
+        font-size:2.5rem;
+        background-color:#1a1a1d;
+    }
+    #btn{
+       margin:auto;
+       background-color:#ff383f;
+       width: 5rem;
+       height:2rem;
+       position: relative;
+       border:none;
+    }
+    #btn a{
+        font-weight: 800;
+        color:#fff;
+        background-color: #ff383f;
+        text-decoration:none; 
+        text-align:center;
+        position: relative;
+        top:0.4rem;
+        border-radius: 2.5%;
+    }
+</style>
+<p>{{message}}</p>
+<div id = "btn"> <a href = "{{url_for('disp_manip_menu')}}">Go back </a></div>
+{% endblock %}

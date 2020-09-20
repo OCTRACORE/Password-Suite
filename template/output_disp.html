@@ -1,0 +1,35 @@
+{% extends 'str_main.html'%}
+{% block content%}
+<div id  =  "nav-bar">
+ <a href="{{url_for('data_input')}}">Home</a>
+ <span>|</span>
+ <a href ="{{url_for('disp_manip_menu')}}">Save/Upload</a>
+</div>
+<div id = "output-head">
+  <h1>Here are the suggestions</h1>
+</div>
+
+  <form id = "output-data" method = "POST" enctype = "multipart/form-data">   
+    <table class= "table">
+    
+       <thead>  
+         <tr>
+           <th>Password</th>
+           <th>Description</th>
+         </tr>
+       </thead> 
+         {% for i in final_lst %}
+        <tr class ="active" style = "text-align: center;">    
+           <td> <a href ="{{url_for('show', id  = i.id)}}">{{ i.passwd }}</a></td> 
+           <td><span>{{ i.desc }}</span></td>
+        </tr>     
+         {% endfor %}
+    </table>
+    
+  </form>
+
+  <div id = "add_passwrd"><span><a href = "{{url_for('add_passwd_inp')}}">Add a password</a></span></div>
+
+
+
+{% endblock %}
