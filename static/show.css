@@ -32,11 +32,15 @@ body{
 }
 #delete{
     background-color: #ff383f;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
 }
 h1{
     position: relative;
     top:1.4rem;
     color:#fff;
+    border-top-left-radius:20px;
+    border-top-right-radius: 20px;
    
 }
 #navbar a{
@@ -68,6 +72,7 @@ h1{
     background-color: #ff383f;
     color:#fff;
     font-weight: 600;
+    border-radius: 20px;
 }
 #delete input[type = "submit"]{
     border:none;
@@ -76,6 +81,7 @@ h1{
     font-weight: 600;
     position: relative;
     left:0.7%;
+    border-radius: 20px;
 }
 #output-data{
     background-color:#1a1a1d;

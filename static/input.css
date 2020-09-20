@@ -85,7 +85,7 @@ body{
 }
 #suggest-input form input[type = "number"]:hover{
     width:180px;
-    transition-timing-function: ease-out;
+    transition-timing-function: ease-in-out;
     transition-duration: 0.30s;
 }
 #header h1{
