@@ -88,15 +88,20 @@ table thead th{
 }
 #add_passwrd{
     background-color:#ff383f;
+    border-bottom-left-radius:20px;
+    border-bottom-right-radius: 20px;
     
 }
 #add_passwrd span{
     background-color:#1a1a1d;
-    border-radius:2.5%;
+    border-radius:20px;
+    width:5rem;
 }
+
 #add_passwrd{
     padding:1.5rem;
 }
+
 #add_passwrd span a{
     background-color:#1a1a1d;
     color:#fff;
@@ -105,8 +110,16 @@ table thead th{
     text-decoration: none;
    
 }
+
 #nav-bar a:hover{
    border-bottom:0.2rem solid #fff;
    border-radius: 2.5%;
 
+}
+#nav-bar{
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+}
+#add-passwrd{
+    width: 500rem;
 }

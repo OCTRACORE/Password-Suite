@@ -69,8 +69,7 @@ tr input[type = "submit"]{
     
 }
 tr input[type = "submit"]:hover{
-    background-color: #fff;
-    color:#ff383f;
+    width:6.5rem;
     transition-timing-function: ease-in-out;
     transition-duration: 0.3s;
 
@@ -91,7 +90,7 @@ h1{
 }
 tr td input[type = "submit"]{
     margin:auto;
-    border-radius: 10px;
+    border-radius: 20px;
 }
 body form:nth-child(2){
     border-radius: 20px;

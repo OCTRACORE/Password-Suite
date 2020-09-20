@@ -29,6 +29,8 @@ body{
 }
 #suggest-input{
     background-color:  #ff383f ;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
 }
 #suggest-input form input[type = "submit"]{
     background-color:#1a1a1d ;
@@ -36,7 +38,8 @@ body{
     font-weight: 600;
     border:none;
     width:6rem;
-    border-radius: 2.5%;
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
 }  
 #suggest-input form input[type = "number"]{
     border:none;
@@ -44,7 +47,12 @@ body{
     border-radius:2.5%;
     margin:auto;
     background-color: #fff;
+    border-top-left-radius: 20px;
+    border-bottom-left-radius: 20px;
    
+}
+#suggest-input form input[type = "number"]:active {
+    border-color:red;
 }
 
 #header{
@@ -52,6 +60,8 @@ body{
     background-color:#1a1a1d ;
     color:#fff;
     border-color:#1a1a1d;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
 }
 #header h1, #header a{
     background-color: #1a1a1d;
@@ -67,7 +77,17 @@ body{
     position: relative;
     bottom: 20rem;
 }
+#suggest-input form input[type = "submit"]:hover{
+    border-radius: 20px;
+    transition-timing-function: ease-in;
+    transition-duration: 0.3s;
 
+}
+#suggest-input form input[type = "number"]:hover{
+    width:180px;
+    transition-timing-function: ease-out;
+    transition-duration: 0.30s;
+}
 #header h1{
     width:fit-content;
     text-align:left;
