@@ -132,3 +132,11 @@ table thead th{
     border-top-left-radius: 20px;
     border-top-right-radius: 20px;
 }
+
+tr td a:hover{
+  border-bottom:0.3rem solid #ff383f;
+  padding:2px;
+}
+
+
+
