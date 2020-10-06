@@ -5,6 +5,7 @@ from flask_modus import Modus
 from werkzeug.utils import secure_filename
 from cryptography.fernet import Fernet
 from global_data import GlobalData
+import os
 
 app = Flask(__name__,template_folder='template')
 modus= Modus(app)
