@@ -1,12 +1,10 @@
 from Password_creator import *
 from flask import Flask,render_template,request,redirect,url_for
-from table import Table 
+from table import Table
 from flask_modus import Modus
-from werkzeug import secure_filename
+from werkzeug.utils import secure_filename
 from cryptography.fernet import Fernet
 from global_data import GlobalData
-import shutil
-import os
 
 app = Flask(__name__,template_folder='template')
 modus= Modus(app)
@@ -31,38 +29,38 @@ def generate():
 
     for i in range(sug):
      v =  password_generator("","","") #for calling the class
-     alpha_g = v.alpha_rand_func()    # line 25- 30; please refer the Password_creator.py file                 
+     alpha_g = v.alpha_rand_func()    # line 25- 30; please refer the Password_creator.py file
      sym_g = v.symbol_rand_func()
      int_g = v.int_rand_func()
-     spec_g = v.special_number_production()     
-     final = v.final_output 
+     spec_g = v.special_number_production()
+     final = v.final_output
      final_g.append(v.final_output)
-     passwd_obj = Table(v.final_output,'nil') # for storing them in a class 
+     passwd_obj = Table(v.final_output,'nil') # for storing them in a class
      (GlobalData.password).append(passwd_obj) # for storing them in a list
     passwd_obj.count_init()
-   
+
     return redirect('/generate/show-output')
-    
+
 
 @app.route('/generate/show-output',methods  = ["GET","POST"])
-def show_output():    
+def show_output():
   return render_template('output_disp.html',final_lst = GlobalData.password) # rendering the output_disp.html
 
 @app.route('/generate/<int:id>',methods = ["GET","PATCH","POST","DELETE"]) # for modifying the function
 def show(id):
    found  =  next(entry for entry in GlobalData.password if entry.id == id) # for finding the entry with the required id
-   if request.method  == b"PATCH": # for dealing with PATCH 
+   if request.method  == b"PATCH": # for dealing with PATCH
         found.passwd = request.form['edit_passwd']
         found.desc = request.form['description']
         return redirect('/generate/show-output')
-   if request.method == b"DELETE":  # for deleting a password suggestion 
+   if request.method == b"DELETE":  # for deleting a password suggestion
         index = found.id
         for i in range( (GlobalData.password).index(found),(len(GlobalData.password)) ): #iterating from the found password
                  (GlobalData.password[i]).id -= 1 #decreasing each password's id by 1
         (GlobalData.password).remove(found) #removing the required passwords
-        
+
         return redirect('/generate/show-output') #redirecting to /generate/show-output
-   return render_template('modify.html',found_entry = found) 
+   return render_template('modify.html',found_entry = found)
 
 @app.route('/generate/add-passwd-input')
 def add_passwd_inp():
@@ -79,17 +77,17 @@ def add_passwd_func():
   new_passwd_obj = ""
   for i in range(add_sug):
        v = password_generator("","","")
-       alpha_g = v.alpha_rand_func()    # line 25- 30; please refer the Password_creator.py file                 
+       alpha_g = v.alpha_rand_func()    # line 25- 30; please refer the Password_creator.py file
        sym_g = v.symbol_rand_func()
        int_g = v.int_rand_func()
-       spec_g = v.special_number_production()     
-       final = v.final_output 
+       spec_g = v.special_number_production()
+       final = v.final_output
        new_passwd_obj = Table(final,"nil")
        new_passwd_obj.id = len(GlobalData.password) + 1
        (GlobalData.password).append(new_passwd_obj)
   new_passwd_obj.count_init()
-  return redirect('/generate/show-output') 
- 
+  return redirect('/generate/show-output')
+
 
 @app.route('/generate/file-manip-disp') # for displaying the uploading and downloading functions for password
 def disp_manip_menu():
@@ -113,28 +111,25 @@ def save_file():
       key_file_name = secure_filename(key_file.filename) #storing the name of the key saving file
 
       for i in GlobalData.password:
-       encrypted_pass_output_lst.append(key_init.encrypt(bytes(i.passwd,encoding="utf-8"))) 
+       encrypted_pass_output_lst.append(key_init.encrypt(bytes(i.passwd,encoding="utf-8")))
        encrypted_desc_output_lst.append(key_init.encrypt(bytes(i.desc,encoding="utf-8")))
       with open(pass_file_Name,"wb+") as k:
 
        for i in encrypted_pass_output_lst:
          k.write(i)
-         k.write(b'\n')   
-      
+         k.write(b'\n')
+
       with open(desc_file_Name,"wb+") as k:
-        
+
        for i in encrypted_desc_output_lst:
          k.write(i)
          k.write(b'\n')
       with open(key_file_name,"wb+") as k:
         k.write(key)
   wd = os.getcwd()
-  file_lst = [pass_file_Name,desc_file_Name,key_file_name]      
-  for i in range(0,3):
-     init_file_path = '/%s/%s' %(wd,file_lst[i])  
-     final_final_path = '/%s/passwd_file/%s' %(wd,file_lst[i])
-     shutil.move(init_file_path,final_final_path)       
-  if GlobalData.password == []:
+  file_lst = [pass_file_Name,desc_file_Name,key_file_name]
+
+  if GlobalData.password == []: # for showing the error when no password
     return render_template('semantic-error.html',message = "Illegal method. Can't save the file when no password is generated")
   else:
     return render_template('file-manip.html')
@@ -155,9 +150,9 @@ def upload_file(): #for uploading the file
     descfileUpload = request.files['descfileUpload'] #requesting the name of the file storing descriptions
     descfileUpload_name = os.path.join('passwd_file',secure_filename(descfileUpload.filename)) #storing the name of the file string descriptions
   #print(Uploadkeyfile_name,Uploadpassfile_name,descfileUpload_name)
-     
+
     with open(Uploadkeyfile_name,"rb") as k: # reading the containing the key
-      Upload_key = k.read()  
+      Upload_key = k.read()
     key_init_sec = Fernet(Upload_key)
 
     with open(Uploadpassfile_name,"rb") as k: # reading the file containing the passwords by decrypting them
@@ -167,13 +162,11 @@ def upload_file(): #for uploading the file
     with open(descfileUpload_name,"rb") as k: #reading the file containing the descriptions by decrypting them
         for i in k:
           decrypted_desc_output_lst.append(str(key_init_sec.decrypt(i),encoding="utf-8"))
-  
-  x = len(decrypted_pass_output_lst) 
+
+  x = len(decrypted_pass_output_lst)
   (GlobalData.password).clear() #clearing the GlobalData.password list to avoid piling up of data
   for s in range(x): #for inserting the decrypted data inside the GlobalData.password list for display
         data_decrypted = Table(decrypted_pass_output_lst[s],decrypted_desc_output_lst[s])
         (GlobalData.password).append(data_decrypted)
-  
+
   return redirect('/generate/show-output') #redirecting to /generate/show-output
-               
- 
