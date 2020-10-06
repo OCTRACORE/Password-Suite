@@ -126,8 +126,7 @@ def save_file():
          k.write(b'\n')
       with open(key_file_name,"wb+") as k:
         k.write(key)
-  wd = os.getcwd()
-  file_lst = [pass_file_Name,desc_file_Name,key_file_name]
+ 
 
   if GlobalData.password == []: # for showing the error when no password
     return render_template('semantic-error.html',message = "Illegal method. Can't save the file when no password is generated")
