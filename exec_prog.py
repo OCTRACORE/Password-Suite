@@ -5,6 +5,8 @@ from flask_modus import Modus
 from werkzeug import secure_filename
 from cryptography.fernet import Fernet
 from global_data import GlobalData
+import shutil
+import os
 
 app = Flask(__name__,template_folder='template')
 modus= Modus(app)
@@ -25,7 +27,7 @@ def generate():
     global data_x
     final_g = [] # for the passwords
     passwd_obj = ""
-    (GlobalData.password).clear()
+    del (GlobalData.password)[:]
 
     for i in range(sug):
      v =  password_generator("","","") #for calling the class
@@ -93,7 +95,7 @@ def add_passwd_func():
 def disp_manip_menu():
   return render_template('file-manip.html')
 
-@app.route('/generate/file-manip',methods = ["GET","POST"]) # for uploading the password
+@app.route('/generate/file-manip',methods = ["GET","POST"]) # for saving the password(s)
 def save_file():
   pass_output_lst = [] #for passwords
   desc_output_lst = [] #for descriptions of the password
@@ -118,6 +120,7 @@ def save_file():
        for i in encrypted_pass_output_lst:
          k.write(i)
          k.write(b'\n')   
+      
       with open(desc_file_Name,"wb+") as k:
         
        for i in encrypted_desc_output_lst:
@@ -125,7 +128,12 @@ def save_file():
          k.write(b'\n')
       with open(key_file_name,"wb+") as k:
         k.write(key)
-        
+  wd = os.getcwd()
+  file_lst = [pass_file_Name,desc_file_Name,key_file_name]      
+  for i in range(0,3):
+     init_file_path = '/%s/%s' %(wd,file_lst[i])  
+     final_final_path = '/%s/passwd_file/%s' %(wd,file_lst[i])
+     shutil.move(init_file_path,final_final_path)       
   if GlobalData.password == []:
     return render_template('semantic-error.html',message = "Illegal method. Can't save the file when no password is generated")
   else:
@@ -141,12 +149,13 @@ def upload_file(): #for uploading the file
 
   if request.method == "POST":
     Uploadpassfile= request.files['Uploadpassfile'] #requesting the name of the required file
-    Uploadpassfile_name = secure_filename(Uploadpassfile.filename) #storing the name of the password saving file
+    Uploadpassfile_name = os.path.join('passwd_file',secure_filename(Uploadpassfile.filename)) #storing the name of the password saving file
     Uploadkeyfile = request.files['Uploadkeyfile'] #requesting the name of the key storing file
-    Uploadkeyfile_name = secure_filename(Uploadkeyfile.filename) #storing the name of the key storing file
+    Uploadkeyfile_name = os.path.join('passwd_file',secure_filename(Uploadkeyfile.filename)) #storing the name of the key storing file
     descfileUpload = request.files['descfileUpload'] #requesting the name of the file storing descriptions
-    descfileUpload_name = secure_filename(descfileUpload.filename) #storing the name of the file string descriptions
-
+    descfileUpload_name = os.path.join('passwd_file',secure_filename(descfileUpload.filename)) #storing the name of the file string descriptions
+  #print(Uploadkeyfile_name,Uploadpassfile_name,descfileUpload_name)
+     
     with open(Uploadkeyfile_name,"rb") as k: # reading the containing the key
       Upload_key = k.read()  
     key_init_sec = Fernet(Upload_key)
@@ -164,7 +173,7 @@ def upload_file(): #for uploading the file
   for s in range(x): #for inserting the decrypted data inside the GlobalData.password list for display
         data_decrypted = Table(decrypted_pass_output_lst[s],decrypted_desc_output_lst[s])
         (GlobalData.password).append(data_decrypted)
-
+  
   return redirect('/generate/show-output') #redirecting to /generate/show-output
                
  
