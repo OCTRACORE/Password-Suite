@@ -5,7 +5,7 @@ from flask_modus import Modus
 from werkzeug.utils import secure_filename
 from cryptography.fernet import Fernet
 from global_data import GlobalData
-import os
+
 
 app = Flask(__name__,template_folder='template')
 modus= Modus(app)
@@ -127,8 +127,7 @@ def save_file():
          k.write(b'\n')
       with open(key_file_name,"wb+") as k:
         k.write(key)
-  wd = os.getcwd()
-  file_lst = [pass_file_Name,desc_file_Name,key_file_name]
+
 
   if GlobalData.password == []: # for showing the error when no password
     return render_template('semantic-error.html',message = "Illegal method. Can't save the file when no password is generated")
@@ -171,3 +170,5 @@ def upload_file(): #for uploading the file
         (GlobalData.password).append(data_decrypted)
 
   return redirect('/generate/show-output') #redirecting to /generate/show-output
+
+
