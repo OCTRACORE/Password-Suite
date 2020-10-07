@@ -127,7 +127,8 @@ def save_file():
          k.write(b'\n')
       with open(key_file_name,"wb+") as k:
         k.write(key)
- 
+  wd = os.getcwd()
+  file_lst = [pass_file_Name,desc_file_Name,key_file_name]
 
   if GlobalData.password == []: # for showing the error when no password
     return render_template('semantic-error.html',message = "Illegal method. Can't save the file when no password is generated")
@@ -144,11 +145,11 @@ def upload_file(): #for uploading the file
 
   if request.method == "POST":
     Uploadpassfile= request.files['Uploadpassfile'] #requesting the name of the required file
-    Uploadpassfile_name = os.path.join('passwd_file',secure_filename(Uploadpassfile.filename)) #storing the name of the password saving file
+    Uploadpassfile_name = secure_filename(Uploadpassfile.filename) #storing the name of the password saving file
     Uploadkeyfile = request.files['Uploadkeyfile'] #requesting the name of the key storing file
-    Uploadkeyfile_name = os.path.join('passwd_file',secure_filename(Uploadkeyfile.filename)) #storing the name of the key storing file
+    Uploadkeyfile_name = secure_filename(Uploadkeyfile.filename) #storing the name of the key storing file
     descfileUpload = request.files['descfileUpload'] #requesting the name of the file storing descriptions
-    descfileUpload_name = os.path.join('passwd_file',secure_filename(descfileUpload.filename)) #storing the name of the file string descriptions
+    descfileUpload_name = secure_filename(descfileUpload.filename) #storing the name of the file string descriptions
   #print(Uploadkeyfile_name,Uploadpassfile_name,descfileUpload_name)
 
     with open(Uploadkeyfile_name,"rb") as k: # reading the containing the key
