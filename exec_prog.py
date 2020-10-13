@@ -1,10 +1,12 @@
 from Password_creator import *
-from flask import Flask,render_template,request,redirect,url_for
+from flask import Flask,render_template,request,redirect,url_for,send_file
 from table import Table
 from flask_modus import Modus
 from werkzeug.utils import secure_filename
 from cryptography.fernet import Fernet
 from global_data import GlobalData
+import os
+import zipfile
 
 
 app = Flask(__name__,template_folder='template')
@@ -100,7 +102,8 @@ def save_file():
   desc_output_lst = [] #for descriptions of the password
   encrypted_pass_output_lst = [] #storing passwords after encryption
   encrypted_desc_output_lst = [] #storing descriptions of passwords after encryption
-
+  UPLOAD_FOLDER = os.getcwd()
+  app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
   if request.method == "POST": # checking if the request method is POST
       pass_file = request.files['passfile'] #requesting the name of the password saving file
       pass_file_Name = secure_filename(pass_file.filename) #storing the name of the password saving file
@@ -110,6 +113,7 @@ def save_file():
       key_init = Fernet(key)  # storing the key for encrypting purpose
       key_file = request.files['keyfile']  # requesting the key saving file
       key_file_name = secure_filename(key_file.filename) #storing the name of the key saving file
+      file_lst = [pass_file_Name,desc_file_Name,key_file_name]
 
       for i in GlobalData.password:
        encrypted_pass_output_lst.append(key_init.encrypt(bytes(i.passwd,encoding="utf-8")))
@@ -129,19 +133,28 @@ def save_file():
         k.write(key)
 
 
-  if GlobalData.password == []: # for showing the error when no password
+  if GlobalData.password == []: # for showing the error when no password is created
     return render_template('semantic-error.html',message = "Illegal method. Can't save the file when no password is generated")
-  else:
-    return render_template('file-manip.html')
+  else: #[pass_file_Name,desc_file_Name,key_file_name]
+
+        zip_obj = zipfile.ZipFile('/home/ZCDS4327/proj/cs_proj_pro_1/zipfile.zip','w')
+        for i in file_lst:
+            zip_obj.write(i,compress_type =zipfile.ZIP_DEFLATED)
+        zip_obj.close()
+        zip_obj_name = zip_obj.filename
+        for i in file_lst:
+            os.remove(i)
+        del file_lst
+        return send_file(zip_obj_name),os.remove('/home/ZCDS4327/proj/cs_proj_pro_1/zipfile.zip')
 @app.route('/generate/file-manip-upload',methods = ["GET","POST"])
 def upload_file(): #for uploading the file
-
+  UPLOAD_FOLDER = os.getcwd()
   decrypted_pass_output_lst = []
   decrypted_desc_output_lst = []
   decrypted_password = []
   decrypted_data = ""
   Upload_key = "" #for storing the key
-
+  app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
   if request.method == "POST":
     Uploadpassfile= request.files['Uploadpassfile'] #requesting the name of the required file
     Uploadpassfile_name = secure_filename(Uploadpassfile.filename) #storing the name of the password saving file
@@ -150,6 +163,11 @@ def upload_file(): #for uploading the file
     descfileUpload = request.files['descfileUpload'] #requesting the name of the file storing descriptions
     descfileUpload_name = secure_filename(descfileUpload.filename) #storing the name of the file string descriptions
   #print(Uploadkeyfile_name,Uploadpassfile_name,descfileUpload_name)
+    Uploadpassfile.save(os.path.join(app.config['UPLOAD_FOLDER'],Uploadpassfile_name))
+    Uploadkeyfile.save(os.path.join(app.config['UPLOAD_FOLDER'],Uploadkeyfile_name))
+    descfileUpload.save(os.path.join(app.config['UPLOAD_FOLDER'],descfileUpload_name))
+
+
 
     with open(Uploadkeyfile_name,"rb") as k: # reading the containing the key
       Upload_key = k.read()
@@ -168,7 +186,11 @@ def upload_file(): #for uploading the file
   for s in range(x): #for inserting the decrypted data inside the GlobalData.password list for display
         data_decrypted = Table(decrypted_pass_output_lst[s],decrypted_desc_output_lst[s])
         (GlobalData.password).append(data_decrypted)
+  os.remove(os.path.join(app.config['UPLOAD_FOLDER'],Uploadpassfile_name))
+  os.remove(os.path.join(app.config['UPLOAD_FOLDER'],Uploadkeyfile_name))
+  os.remove(os.path.join(app.config['UPLOAD_FOLDER'],descfileUpload_name))
 
   return redirect('/generate/show-output') #redirecting to /generate/show-output
+
 
 
