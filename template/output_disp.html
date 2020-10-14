@@ -9,23 +9,23 @@
   <h1>Suggestions</h1>
 </div>
 
-  <form id = "output-data" method = "POST" enctype = "multipart/form-data">   
+  <form id = "output-data" method = "POST" enctype = "multipart/form-data">
     <table class= "table">
-    
-       <thead>  
+
+       <thead>
          <tr>
            <th>Password</th>
            <th>Description</th>
          </tr>
-       </thead> 
+       </thead>
          {% for i in final_lst %}
-        <tr class ="active" style = "text-align: center;">    
-           <td> <a href ="{{url_for('show', id  = i.id)}}">{{ i.passwd }}</a></td> 
+        <tr class ="active" style = "text-align: center;">
+           <td> <a href ="{{url_for('show', id  = i.id)}}">{{ i.passwd }}</a></td>
            <td><span>{{ i.desc }}</span></td>
-        </tr>     
+        </tr>
          {% endfor %}
     </table>
-    
+
   </form>
 
   <div id = "add_passwrd"><span><a href = "{{url_for('add_passwd_inp')}}">Add a password</a></span></div>
