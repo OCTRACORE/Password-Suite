@@ -1,17 +1,17 @@
 {% extends 'str_main.html' %}
 {% block content %}
 
-<h1>Edit the password</h1> 
+<h1>Edit the password</h1>
 <div id  = "navbar">
   <a href = "{{url_for('data_input')}}">Home</a>
   <span>|</span>
   <a href = "{{url_for('show_output')}}">Go back</a>
   <span>|</span>
-  <a href="{{url_for('disp_manip_menu')}}">Save/Upload</a> 
+  <a href="{{url_for('disp_manip_menu')}}">Save/Upload</a>
 </div>
 <form id = "edit" action = "{{url_for('show',id  = found_entry.id)}}?_method=PATCH" method ="POST">
- 
-   
+
+
    <input type = "text" value = "{{found_entry.passwd}}" name = "edit_passwd" autocomplete="off" required>
    <br />
    <input type = "text" value  ="{{found_entry.desc}}" name = "description" autocomplete = "off" required>
