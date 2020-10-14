@@ -1,6 +1,6 @@
 {%extends 'str_main.html'%}
 {% block content %}
-  
+
   <h1>Password Suite</h1>
   <div id  = "nav-bar">
    <a href = "{{url_for('data_input')}}">Home</a>
@@ -11,49 +11,51 @@
   <h2>Saving</h2>
   <form action ="/generate/file-manip" enctype = "multipart/form-data" method = "POST">
     <table>
-      <tr>   
+      <tr>
       <td>For the passwords</td>
-      <td><input type = "file" name = "passfile" id  = "passfile"></td>
+      <td><input type = "file" name = "passfile" id  = "passfile" required></td>
       <td><label class="material-icons" style = "width:15%;margin:auto;" for = "passfile">add_box</label></td>
       </tr>
       <tr>
-      <td>For the decription</td>
-      <td><input type = "file" name  = "descfile" id = "descfile"></td>
+      <td>For the description</td>
+      <td><input type = "file" name  = "descfile" id = "descfile" required></td>
       <td><label class="material-icons" for  = "descfile" style = "width:15%;margin:auto;">add_box</label></td>
 
       </tr>
       <tr>
       <td>For the key</td>
-      <td><input type = "file" name = "keyfile" id  = "keyfile"></td>
+      <td><input type = "file" name = "keyfile" id  = "keyfile" required></td>
       <td><label class="material-icons" for = "keyfile" style = "width:15%;margin:auto;">add_box</label></td>
 
       </tr>
       <tr>
-      <td colspan = "3"><input type = "submit" name  = "saving file"></td>
+      <td colspan = "3"><input type = "submit" name  = "saving file" required></td>
       </tr>
     </table>
   </form>
   <h2>Uploading</h2>
   <form action = "/generate/file-manip-upload" enctype= "multipart/form-data" method = "POST", id = "last-form">
-   <table>   
-    <tr> 
+   <table>
+    <tr>
      <td>For the password</td>
-     <td><input type = "file" name = "Uploadpassfile" id = "Uploadpassfile"></td>
+     <td><input type = "file" name = "Uploadpassfile" id = "Uploadpassfile required"></td>
      <td><label class="material-icons" for  = "Uploadpassfile"style = "width:15%;margin:auto;">add_box</label></td>
     </tr>
-    <tr> 
+    <tr>
      <td>For the description</td>
-     <td><input type = "file" name  = "descfileUpload"  id  = "descfileUpload"></td>
+     <td><input type = "file" name  = "descfileUpload"  id  = "descfileUpload" reuired></td>
      <td><label class="material-icons"  for = "descfileUpload" style = "width:15%;margin:auto;">add_box</label></td>
     </tr>
     <tr>
      <td>For the key</td>
-     <td><input type = "file" name = "Uploadkeyfile" id = "Uploadkeyfile"></td>
+     <td><input type = "file" name = "Uploadkeyfile" id = "Uploadkeyfile" required></td>
      <td><label class="material-icons" for = "Uploadkeyfile" style = "width:15%;margin:auto;">add_box</label></td>
     </tr>
-    <tr> 
+    <tr>
      <td colspan="3"><input type ="submit" name  = "Uploading file"></td>
     </tr>
    </table>
   </form>
 {% endblock %}
+
+
