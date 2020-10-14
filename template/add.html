@@ -6,10 +6,10 @@
   <span>|</span>
   <a href = "{{url_for('show_output')}}">Go back</a>
   <span>|</span>
-  <a href="{{url_for('disp_manip_menu')}}">Save/Upload</a> 
+  <a href="{{url_for('disp_manip_menu')}}">Save/Upload</a>
 </div>
 <form action = "/generate/add-passwd-sug" method = "GET">
-  <input type = "number" name = "add-sug"placeholder ="no. of suggestion" autocomplete="off">
+  <input type = "number" name = "add-sug"placeholder ="no. of suggestion" autocomplete="off" required>
   <input type = "submit" value = "Submit">
 </form>
 {% endblock %}
