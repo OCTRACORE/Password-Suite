@@ -1,4 +1,4 @@
-*{  
+*{
     padding:1rem;
     font-family: 'Lato',sans-serif;
     background-color: #caebf2;
@@ -28,7 +28,8 @@ h1,#nav-bar{
     color:#fff;
     font-weight: 600;
     text-decoration:none;
-    
+    outline:none;
+
 }
 form{
     background-color: #ff383f;
@@ -43,11 +44,7 @@ form input[type = "number"]{
     border-top-left-radius:20px;
     border-bottom-left-radius:20px;
 }
-form input[type = "number"]:hover{
-    width:55%;
-    transition-timing-function: ease-in-out;
-    transition-duration: 0.3s;
-}
+
 form input[type = "submit"]{
     width:8rem;
     border:none;
@@ -56,13 +53,15 @@ form input[type = "submit"]{
     font-weight:600;
     border-top-right-radius: 20px;
     border-bottom-right-radius:20px;
+    outline:none;
 }
 form input[type = "submit"]:hover{
-   border-radius:20px;
+   background-color: #252529;
    transition-timing-function: ease-in-out;
    transition-duration: 0.3s;
 }
 #nav-bar a:hover{
     border-bottom:0.2rem solid #ff383f;
-        
+
 }
+
