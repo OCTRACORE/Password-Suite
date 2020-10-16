@@ -1,4 +1,4 @@
-*{  
+*{
     padding:0.7rem;
     font-family:'Lato',sans-serif;
     background-color:#caebf4;
@@ -10,7 +10,7 @@ html{
 body{
     width: fit-content;
     margin: auto;
-    
+
 }
 h1,#nav-bar,h2,form{
     margin:auto;
@@ -26,6 +26,7 @@ h1,h2{
 }
 #nav-bar,#nav-bar a,#nav-bar span{
     background-color: #1a1a1d;
+    outline: none;
 }
 #nav-bar{
     height:2rem;
@@ -52,7 +53,7 @@ tr,td{
     background-color: #1a1a1d;
     color:#fff;
     font-weight: 600;
-    
+
 }
 input[type = "file"]{
     background-color:#1a1a1d;
@@ -65,12 +66,13 @@ tr input[type = "submit"]{
     color:#fff;
     font-weight: 600;
     border:none;
-   
-    
+    outline:none;
+
+
 }
 tr input[type = "submit"]:hover{
-    width:6.5rem;
-    transition-timing-function: ease-in-out;
+    background-color: #fa4a50;
+    transition-timing-function: ease-in-out ;
     transition-duration: 0.3s;
 
 }
@@ -80,7 +82,7 @@ tr input[type = "submit"]:hover{
 
 }
 tr{
-   border-bottom:1px solid #fff; 
+   border-bottom:1px solid #fff;
 }
 h1{
     border-top-left-radius: 20px;
