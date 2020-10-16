@@ -1,4 +1,4 @@
-*{  
+*{
     font-family: 'Lato',sans-serif;
     padding:0.8rem;
     background-color: #caebf2;
@@ -25,7 +25,7 @@ body{
     height:50%;
     position:sticky;
     background-color:  #ff383f ;
-    
+
 }
 #suggest-input{
     background-color:  #ff383f ;
@@ -40,7 +40,8 @@ body{
     width:6rem;
     border-top-right-radius: 20px;
     border-bottom-right-radius: 20px;
-}  
+    outline:none;
+}
 #suggest-input form input[type = "number"]{
     border:none;
     width:10rem;
@@ -50,7 +51,7 @@ body{
     border-top-left-radius: 20px;
     border-bottom-left-radius: 20px;
     outline:none;
-   
+
 }
 #suggest-input form input[type = "number"]:active {
     border-color:red;
@@ -79,16 +80,12 @@ body{
     bottom: 20rem;
 }
 #suggest-input form input[type = "submit"]:hover{
-    border-radius: 20px;
+    background-color:#252529;
     transition-timing-function: ease-in;
     transition-duration: 0.3s;
 
 }
-#suggest-input form input[type = "number"]:hover{
-    width:180px;
-    transition-timing-function: ease-in-out;
-    transition-duration: 0.30s;
-}
+
 #header h1{
     width:fit-content;
     text-align:left;
@@ -100,7 +97,7 @@ body{
         margin:auto;
         position: relative;
         top:8rem;
-    
+
     }
     body{
         height:80%;
@@ -111,19 +108,21 @@ body{
         position: relative;
         top:2em;
         margin:auto;
-    }   
+    }
     #suggest-input form{
         height:100%;
         position:sticky;
         background-color:  #ff383f ;
-        margin:auto;        
-        
+        margin:auto;
+
     }
     #header{
         height:55%;
         background-color:#1a1a1d ;
         color:#fff;
         border-color:#1a1a1d;
-    }   
+    }
 
 }
+
+
