@@ -2,7 +2,7 @@
   padding:1rem;
   background-color:#caebf2;
   font-family: 'Lato',sans-serif;
-  
+
 }
 html{
     width:fit-content;
@@ -25,7 +25,8 @@ body{
 #navbar{
     width:fit-content;
     margin:auto;
-    
+    outline: none;
+
 }
 #delete input{
     width:7.2rem;
@@ -41,7 +42,7 @@ h1{
     color:#fff;
     border-top-left-radius:20px;
     border-top-right-radius: 20px;
-   
+
 }
 #navbar a{
     background-color:#1a1a1d;
@@ -51,7 +52,9 @@ h1{
     padding-bottom:-0.5%;
     padding-top: 0.5%;
     border-radius: 2.5%;
-    
+    outline: none;
+
+
 }
 #navbar a:hover{
     border-bottom:0.2rem solid #ff383f;
@@ -67,6 +70,7 @@ h1{
     width:15rem;
     border-radius:20px ;
     outline: none;
+    outline: none;
 }
 #edit input[type = "submit"]{
     border: none;
@@ -74,6 +78,7 @@ h1{
     color:#fff;
     font-weight: 600;
     border-radius: 20px;
+    outline: none;
 }
 #delete input[type = "submit"]{
     border:none;
@@ -83,27 +88,26 @@ h1{
     position: relative;
     left:0.7%;
     border-radius: 20px;
+   outline:none;
 }
 #output-data{
     background-color:#1a1a1d;
 }
 #output-data table{
     background-color:#1a1a1d;
-    
+
 }
 #edit input[type = "text"]:hover{
-    width:68%;
     transition-timing-function: ease-in-out;
     transition-duration:0.2s;
 }
 #edit input[type = "submit"]:hover{
-    padding:1.2rem;
     transition-timing-function: ease-in-out;
     transition-duration:0.3s;
+    background-color: #fa4a50;
 
 }
 #delete input[type = "submit"]:hover{
-    padding:1.2rem;
     transition-timing-function: ease-in-out;
     transition-duration:0.3s;
 
