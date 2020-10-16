@@ -1,4 +1,4 @@
-*{  
+*{
     font-family: 'Lato',sans-serif;
     background-color: #caebf2;
     padding: 0.8rem ;
@@ -15,7 +15,7 @@ body{
     height:inherit;
     margin:auto;
 }
-#nav-bar,#output-head,#output-data{   
+#nav-bar,#output-head,#output-data{
     margin:auto;
 
 }
@@ -85,7 +85,7 @@ table thead th{
 #nav-bar span{
     color:#fff;
     font-weight:600;
-   
+
 }
 #add_passwrd{
     background-color:#ff383f;
@@ -99,27 +99,28 @@ table thead th{
     background-color:#1a1a1d;
     border-radius:20px;
     display:inline-block;
-    
+
 }
 
 #add_passwrd{
     padding:1.5rem;
 }
 #add_passwrd span:hover{
-   padding:1rem;
-   bottom:0.5rem;
+
+   background-color:#252529;
+
    transition-timing-function: ease-in-out;
    transition-duration: 0.30s;
 
 }
 
 #add_passwrd span a{
-    background-color:#1a1a1d;
+    background-color:transparent;
     color:#fff;
     padding:0.5rem;
     font-weight:600;
     text-decoration: none;
-   
+
 }
 
 #nav-bar a:hover{
