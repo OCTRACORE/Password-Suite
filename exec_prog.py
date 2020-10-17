@@ -7,10 +7,12 @@ from cryptography.fernet import Fernet
 from global_data import GlobalData
 import os
 import zipfile
-
+import mysql.connector as sqltor
+import datetime
 
 app = Flask(__name__,template_folder='template')
 modus= Modus(app)
+mydb =sqltor.connect(host="ZCDS4327.mysql.pythonanywhere-services.com",user="ZCDS4327",password="hello123",database="ZCDS4327$password_site")
 
 
 @app.route("/")
@@ -138,6 +140,17 @@ def save_file():
   else: #[pass_file_Name,desc_file_Name,key_file_name]
 
         zip_obj = zipfile.ZipFile('/home/ZCDS4327/proj/cs_proj_pro_1/zipfile.zip','w')
+
+        #SQL Execution
+        getDate = datetime.datetime.now()
+        cursor = mydb.cursor()
+        n_passwd = len(GlobalData.password)
+        insert_query = "INSERT INTO password_table VALUES(%s,%s)"
+        query_val = (n_passwd,getDate)
+        cursor.execute(insert_query,query_val)
+        mydb.commit()
+
+
         for i in file_lst:
             zip_obj.write(i,compress_type =zipfile.ZIP_DEFLATED)
         zip_obj.close()
@@ -191,6 +204,4 @@ def upload_file(): #for uploading the file
   os.remove(os.path.join(app.config['UPLOAD_FOLDER'],descfileUpload_name))
 
   return redirect('/generate/show-output') #redirecting to /generate/show-output
-
-
 
