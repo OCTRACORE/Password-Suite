@@ -29,6 +29,7 @@ table{
 td,th,tr{
     border:none;
 
+
 }
 table tr:nth-child(even) td{
     background-color:#fff;
@@ -37,6 +38,7 @@ table tr:nth-child(even) td a{
     font-weight:100;
     color:#1a1a1d;
     text-decoration:none;
+    outline: none;
     background-color: #fff;
 }
 table tr:nth-child(even) td span{
@@ -51,6 +53,7 @@ table tr:nth-child(odd) td a{
     font-weight:100;
     text-decoration:none;
     color:#fff;
+    outline: none;
     background-color: #1a1a1d;
 }
 table tr:nth-child(odd) td span{
@@ -81,6 +84,7 @@ table thead th{
    color:#fff;
    text-decoration: none;
    font-weight:600;
+   outline: none;
 }
 #nav-bar span{
     color:#fff;
@@ -120,7 +124,7 @@ table thead th{
     padding:0.5rem;
     font-weight:600;
     text-decoration: none;
-
+    outline:none;
 }
 
 #nav-bar a:hover{
@@ -138,6 +142,3 @@ tr td a:hover{
   border-bottom:0.3rem solid #ff383f;
   padding:2px;
 }
-
-
-
