@@ -138,8 +138,9 @@ def save_file():
   if GlobalData.password == []: # for showing the error when no password is created
     return render_template('semantic-error.html',message = "Illegal method. Can't save the file when no password is generated")
   else: #[pass_file_Name,desc_file_Name,key_file_name]
-
-        zip_obj = zipfile.ZipFile('/home/ZCDS4327/proj/cs_proj_pro_1/zipfile.zip','w')
+        cwd = os.getcwd() + "/zipfile.zip"
+        zip_obj = zipfile.ZipFile(cwd,'w')
+        mydb =sqltor.connect(host="ZCDS4327.mysql.pythonanywhere-services.com",user="ZCDS4327",password="hello123",database="ZCDS4327$password_site")
 
         #SQL Execution
         getDate = datetime.datetime.now()
@@ -158,7 +159,7 @@ def save_file():
         for i in file_lst:
             os.remove(i)
         del file_lst
-        return send_file(zip_obj_name),os.remove('/home/ZCDS4327/proj/cs_proj_pro_1/zipfile.zip')
+        return send_file(zip_obj_name),os.remove(cwd)
 @app.route('/generate/file-manip-upload',methods = ["GET","POST"])
 def upload_file(): #for uploading the file
   UPLOAD_FOLDER = os.getcwd()
@@ -204,4 +205,3 @@ def upload_file(): #for uploading the file
   os.remove(os.path.join(app.config['UPLOAD_FOLDER'],descfileUpload_name))
 
   return redirect('/generate/show-output') #redirecting to /generate/show-output
-
