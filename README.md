@@ -23,3 +23,15 @@ We have created the algorithm powerful and efficient enough to generate the pass
    <li>jinja</li>
    <li>zipfile</li>
 </ul>
+
+<h1>Screenshots</h1>
+<h2>Home page</h2>
+<img src = "https://user-images.githubusercontent.com/43207029/145159986-c6e6473a-01a7-4de4-84e0-98e8d04b7bdc.png"/>
+<h2>Output page</h2>
+<img src = "https://user-images.githubusercontent.com/43207029/145160247-3008b02f-bf86-4493-9be5-5c62e9a3c4f5.png"/>
+<h2>Adding page</h2>
+<img src = "https://user-images.githubusercontent.com/43207029/145160069-3db47c75-2ec7-46b3-a6a4-732b67cb4411.png"/>
+<h2>Editing page</h2>
+<img src = "https://user-images.githubusercontent.com/43207029/145160394-ee1dde4f-538f-49fc-85dc-938b58744211.png"/>
+<h2>Downloading page</h2>
+<img src = "https://user-images.githubusercontent.com/43207029/145160195-26bf9361-eb3e-4c56-9eb9-503751975a21.png"/>
